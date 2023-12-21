@@ -680,19 +680,30 @@ function printAsPDF() {
     </script>
 
     <script>
- //17.30% Cooperation Tax
+  // 17. 30% Cooperation Tax
   function calculate30PercentCooperationTax() {
-        var adjustedChargeableIncome = document.getElementById('AdjustedChargeableIncome-input').value;
-        var cooperationTax = (adjustedChargeableIncome * 0.3).toFixed(2);
-        var CooperationTaxinput = document.getElementById('CooperationTax-input');
-        CooperationTaxinput.value = cooperationTax;
-      }
-       calculate30PercentCooperationTax();
-        let adjustedChargeableIncomeInput = document.querySelector('#AdjustedChargeableIncome-input');
-        adjustedChargeableIncomeInput.addEventListener('keyup', function() {
-           calculate30PercentCooperationTax();
-      });
-       </script>
+    var adjustedChargeableIncome = parseFloat(document.getElementById('AdjustedChargeableIncome-input').value);
+    
+    // Check if adjustedChargeableIncome is greater than 0
+    if (adjustedChargeableIncome > 0) {
+      var cooperationTax = (adjustedChargeableIncome * 0.3).toFixed(2);
+    } else {
+      // If adjustedChargeableIncome is not greater than 0, set cooperationTax to 0
+      var cooperationTax = 0;
+    }
+
+    var cooperationTaxInput = document.getElementById('CooperationTax-input');
+    cooperationTaxInput.value = cooperationTax;
+  }
+
+  calculate30PercentCooperationTax();
+
+  let adjustedChargeableIncomeInput = document.querySelector('#AdjustedChargeableIncome-input');
+  adjustedChargeableIncomeInput.addEventListener('keyup', function() {
+    calculate30PercentCooperationTax();
+  });
+</script>
+
 
   <script>
       const cooperationTaxInput = document.getElementById("CooperationTax-input");
